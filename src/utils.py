@@ -206,6 +206,7 @@ def get_currency_rates():
 def get_stocks_prices():
     with open(os.path.join(DATA_DIR, "user_settings.json")) as file:
         content = json.load(file)
+
     tickers = content.get("user_stocks")
     load_dotenv()
     prices = []
@@ -232,9 +233,7 @@ if __name__ == "__main__":
     # print(expenses_calc)
     # incomes_calc = calculate_incomes(plus)
     # print(incomes_calc)
-    #
     # rates2 = get_currency_rates()
     # print(rates2)
-    #
     # stocks = get_stocks_prices()
     # print(stocks)
