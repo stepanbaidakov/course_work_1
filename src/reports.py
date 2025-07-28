@@ -16,7 +16,9 @@ services_logger.addHandler(file_handler)
 
 
 def report(func):
+    """Принимает функцию"""
     def wrapper(*args, **kwargs):
+        """Записывает данные отчета в файл"""
         result = func(*args, **kwargs)
         result_str = str(result)
         with open(os.path.join(DATA_DIR, "reports.txt"), "w", encoding="utf-8") as file:
@@ -33,6 +35,7 @@ def find_spending_by_category(
     transactions: pd.DataFrame = pd.read_csv(os.path.join(DATA_DIR, "operations.csv")),
 ) -> pd.DataFrame:
     """Функция возвращает траты по заданной категории за последние три месяца"""
+
     transactions["Дата операции"] = transactions["Дата операции"].apply(
         lambda row: datetime.datetime.strptime(row, "%d.%m.%Y %H:%M:%S")
     )
